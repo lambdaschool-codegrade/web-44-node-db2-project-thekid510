@@ -8,14 +8,14 @@ const cars = [
         title: 'clean',
         transmission: 'manual'
 }, {
-        vin: '1111111111111',
+        vin: '2222222222222',
         make: 'toyota',
         model:'corolla',
         mileage: 115000,
         title: 'salvaged',
        
     }, {
-        vin: '1111111111111',
+        vin: '3333333333333',
         make: 'ford',
         model:'focus',
         mileage: 15000,
@@ -23,9 +23,13 @@ const cars = [
 },
 ]
 
-exports.seed = function(knex){
-    return knex('cars')
-    .truncate().then(()=>{
-        return knex('cars').insert(cars)
-    })
-}
+// exports.seed = function(knex){
+//     return knex('cars')
+//     .truncate().then(()=>{
+//         return knex('cars').insert(cars)
+//     })
+// }
+    exports.seed = async function (knex) {
+        await knex('cars').truncate()
+        await knex('cars').insert(cars)
+    }
